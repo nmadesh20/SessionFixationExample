@@ -48,5 +48,5 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Pay As You Go(069964e3-0984-4087-b45f-560653532e2d)'
     appType: 'webApp'
-    WebAppName: 'myvulnerabledotnetapp'
+    WebAppName: 'mydotnetapp0214'
     packageForLinux: '$(build.artifactStagingDirectory)/**/*.zip'
