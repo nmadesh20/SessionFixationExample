@@ -21,7 +21,9 @@ steps:
     SonarCloud: 'sonarcloud'
     organization: 'app-sonar2706'
     scannerMode: 'CLI'
-    configMode: 'file'
+    configMode: 'manual'
+    cliProjectKey: 'SessionFixationExample'
+    cliSources: '.'
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -50,6 +52,7 @@ steps:
     artifact: 'dotnetApp'
     publishLocation: 'pipeline'
 - task: SonarCloudAnalyze@1
+
 
 - task: SonarCloudPublish@1
   inputs:
