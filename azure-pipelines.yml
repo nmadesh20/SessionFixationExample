@@ -16,14 +16,15 @@ variables:
 
 
 steps:
-- task: SonarCloudPrepare@1
+- task: FedRampFortifyOnDemandStatic@8
   inputs:
-    SonarCloud: 'sonarcloud'
-    organization: 'app-sonar2706'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'SessionFixationExample'
-    cliSources: '.'
+    FortifyProjects: '.'
+    BSIToken: 'eyJ0ZW5hbnRJZCI6MjIyNDYsInRlbmFudENvZGUiOiJTdHVkZW50UGF0aF85MTg4NDg3MjJfRk1BXzc2NTE5MjU2MSIsInJlbGVhc2VJZCI6MTczNzAzLCJwYXlsb2FkVHlwZSI6IkFOQUxZU0lTX1BBWUxPQUQiLCJhc3Nlc3NtZW50VHlwZUlkIjoxNCwidGVjaG5vbG9neVR5cGUiOiIuTkVUIiwidGVjaG5vbG9neVR5cGVJZCI6MSwidGVjaG5vbG9neVZlcnNpb24iOiI1LjAiLCJ0ZWNobm9sb2d5VmVyc2lvbklkIjozMiwiYXVkaXRQcmVmZXJlbmNlIjoiQXV0b21hdGVkIiwiYXVkaXRQcmVmZXJlbmNlSWQiOjIsImluY2x1ZGVUaGlyZFBhcnR5IjpmYWxzZSwiaW5jbHVkZU9wZW5Tb3VyY2VBbmFseXNpcyI6ZmFsc2UsInBvcnRhbFVyaSI6Imh0dHBzOi8vdHJpYWwuZm9ydGlmeS5jb20vIiwiYXBpVXJpIjoiaHR0cHM6Ly9hcGkudHJpYWwuZm9ydGlmeS5jb20iLCJzY2FuUHJlZmVyZW5jZSI6IlN0YW5kYXJkIiwic2NhblByZWZlcmVuY2VJZCI6MX0='
+    APIAuthenticationType: '2'
+    Username: 'iamjosetom1992'
+    PersonalAccessTokenSecret: 'WjZ0UmVhPWEieDdJU05OVFQxLWt5cDlseWxpdDJL0'
+    TenantID: 'StudentPath_918848722_FMA_765192561'
+    EntitlementPreference: '1'
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -51,16 +52,4 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'dotnetApp'
     publishLocation: 'pipeline'
-- task: SonarCloudAnalyze@1
 
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Pay As You Go(069964e3-0984-4087-b45f-560653532e2d)'
-    appType: 'webApp'
-    WebAppName: 'mydotnetapp0214'
-    packageForLinux: '$(build.artifactStagingDirectory)/**/*.zip'
